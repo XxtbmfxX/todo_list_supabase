@@ -17,3 +17,12 @@ interface UserData {
   avatar_url: string | undefined; 
   // Agregar otros campos según tus necesidades
 }
+
+
+interface Todo {
+  id: string;
+  user_id: string,
+  task: string,
+  is_complete: boolean,
+  inserted_at: string
+}
