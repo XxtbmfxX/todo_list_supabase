@@ -1,0 +1,12 @@
+.Form{
+  display: grid;
+}
+
+.Todo{
+  display: grid;
+}
+
+.Todos{
+  list-style: none;
+
+}
