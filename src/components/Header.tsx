@@ -10,7 +10,7 @@ const Header: React.FC = () => {
         <div className="Burger">
             ---
             <div>
-                <button onClick={logout} >Logg OUt</button>
+                <button onClick={logout} >Logg Out</button>
             </div>
         </div>
     </header>

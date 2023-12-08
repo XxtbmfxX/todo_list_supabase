@@ -1,28 +1,27 @@
-import React, { createContext, useContext, ReactNode, useState, useEffect } from 'react';
+import React, { createContext, useContext, ReactNode, useState, useEffect} from 'react';
 
+
+
+interface UserProviderProps {
+  children: ReactNode;
+}
 
 // Crear el contexto con un valor inicial
 const UserContext = createContext<UserContextProps | undefined>(undefined);
 
-// Proveedor de contexto que envuelve a la aplicación
-export const UserProvider = ({ children }) => {
+
+
+export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
   // Estado del usuario
-  const [session, setSession] = useState(null)
-
-  useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session)
-    })
-
-    supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session)
-    })
-  }, [])
+  const [number, setNumber] = useState<number>(0);
+  const [userData, setUserData] = useState<UserData | null>(null);
 
   // Proporcionar el contexto con el valor del usuario y las funciones para iniciar/cerrar sesión
-  const contextValue = {
-    session,
-    setSession
+  const contextValue: UserContextProps = {
+    number,
+    setNumber,
+    userData, 
+    setUserData
   };
 
   return (

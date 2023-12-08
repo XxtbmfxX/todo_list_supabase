@@ -1,11 +1,12 @@
 import { useState } from 'react'
-import { supabase } from '../supabase/supabaseClient'
+import { supabase } from '../supabaseClient'
+import Header from './Header'
 
 export default function Auth() {
   const [loading, setLoading] = useState(false)
   const [email, setEmail] = useState('')
 
-  const handleLogin = async (event) => {
+  const handleLogin = async (event:  React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
     setLoading(true)
@@ -23,11 +24,11 @@ export default function Auth() {
   }
 
   return (
-    <div className="row flex flex-center">
-      <div className="col-6 form-widget">
-        <h1 className="header">Supabase + React</h1>
+    <div className="">
+      <div className="">
+        <Header/>
         <p className="description">Sign in via magic link with your email below</p>
-        <form className="form-widget" onSubmit={handleLogin}>
+        <form className="" onSubmit={handleLogin}>
           <div>
             <input
               className="inputField"
