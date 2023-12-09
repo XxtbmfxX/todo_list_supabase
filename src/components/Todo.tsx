@@ -3,7 +3,7 @@ import { DeleteTodo } from "../api/DeleteTodo";
 
 const Todo = ({tarea}:any) => {
 
-  const {userTodos, setUserTodos} = useUser()
+  const {userTodos, setUserTodos, setNumber} = useUser()
 
   const deleteTask = async () => {
     const confirmDelete = window.confirm('¿Está seguro de eliminar la tarea?');
@@ -11,7 +11,7 @@ const Todo = ({tarea}:any) => {
     if (confirmDelete) {
       try {
         await DeleteTodo(tarea.id);
-
+        setNumber(Math.random())
         // Actualizar el estado después de eliminar la tarea
         if (userTodos) {
           const updatedTodos = userTodos.filter((todo) => todo.id !== tarea.id);
@@ -31,9 +31,9 @@ const Todo = ({tarea}:any) => {
         alignItems: "center",
         justifyContent: "space-between",
         gap: "20px",
+        maxWidth: "500px"
       }}
     >
-      <span>{tarea.id}</span>
       <h2
         style={{
           fontSize: "20px",

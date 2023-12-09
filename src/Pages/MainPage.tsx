@@ -4,7 +4,6 @@ import { useUser } from "../Contexto/UserContext";
 
 import { useGetUser } from "../api/GetUser";
 import TodoList from "../components/TodoList";
-import Busqueda from "../components/Busqueda";
 import Modal from "../components/Modal";
 
 interface MainPageProps {
@@ -37,8 +36,6 @@ const MainPage: React.FC<MainPageProps> = ({ session }) => {
             margin: "20px",
           }}
         >
-          <Busqueda/>
-          <p>Hola! {userData?.username}</p>
           <TodoList />
         </main>
       ) : (

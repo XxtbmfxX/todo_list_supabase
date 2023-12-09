@@ -59,6 +59,7 @@ export default function Auth() {
             placeholder="Your email"
             value={email}
             required={true}
+            name="email"
             onChange={(e) => setEmail(e.target.value)}
             style={{
               padding: "5px",

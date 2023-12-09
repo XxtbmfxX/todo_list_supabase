@@ -8,7 +8,7 @@ import { useUser } from '../Contexto/UserContext';
 
 const TodoList: React.FC = () => {
 
-  const {userTodos, setUserTodos} = useUser()
+  const {userTodos, setUserTodos, number} = useUser()
 
   const fetchTareas = async () => {
     try {
@@ -21,9 +21,8 @@ const TodoList: React.FC = () => {
 
 
   useEffect(() => {
-   
     fetchTareas();
-  }, []); // Se ejecutará una vez al montar el componente
+  }, [number]); // Se ejecutará una vez al montar el componente
 
 
 
@@ -35,7 +34,7 @@ const TodoList: React.FC = () => {
 
      >
       {userTodos  ? (
-        <ul style={{listStyle: "none"}} >
+        <ul style={{listStyle: "none", display: "grid", justifyItems:"center" }} >
           {userTodos.map((tarea) => (
            <Todo key={tarea.id} tarea={tarea} />
             

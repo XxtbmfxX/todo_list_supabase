@@ -28,4 +28,5 @@ interface Todo {
   task: string | null,
   is_complete: boolean | null,
   inserted_at: string | null
+
 }
