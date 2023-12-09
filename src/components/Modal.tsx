@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useUser } from "../Contexto/UserContext";
-import { GetTodos } from "../api/GetTodos";
 import { PostTodo } from "../api/PostTodo";
 
 const Modal: React.FC = () => {
