@@ -7,8 +7,8 @@ export default function Auth() {
 
   const emailRedirectTo =
     import.meta.env.MODE === "development"
-      ? "http://localhost:5173"
-      : import.meta.env.VITE_SUPABASE_EMAIL_REDIRECT;
+      ? import.meta.env.VITE_SUPABASE_EMAIL_REDIRECT_DEV
+      : import.meta.env.VITE_SUPABASE_EMAIL_REDIRECT_PROD
 
   const handleLogin = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
