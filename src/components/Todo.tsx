@@ -1,7 +1,7 @@
 import { useUser } from "../Contexto/UserContext";
 import { DeleteTodo } from "../api/DeleteTodo";
 
-const Todo = ({tarea}) => {
+const Todo = ({tarea}:any) => {
 
   const {userTodos, setUserTodos} = useUser()
 
@@ -17,7 +17,7 @@ const Todo = ({tarea}) => {
           const updatedTodos = userTodos.filter((todo) => todo.id !== tarea.id);
           setUserTodos(updatedTodos);
         }
-      } catch (error) {
+      } catch (error: any) {
         console.error('Error al eliminar tarea:', error.message);
       }
     }

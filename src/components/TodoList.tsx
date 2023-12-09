@@ -1,5 +1,5 @@
 // Por ejemplo, en un componente
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { GetTodos } from '../api/GetTodos';
 import Todo from './Todo';
 import { useUser } from '../Contexto/UserContext';
