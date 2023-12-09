@@ -1,12 +1,12 @@
 // @ts-ignore
 import { UserProvider, useUser} from './Contexto/UserContext.jsx';
 
-import './App.css';
 import Auth from './components/Auth';
 import { useEffect, useState } from 'react';
 import { supabase } from './supabaseClient.js';
 import MainPage from './Pages/MainPage.js';
 import { Session } from '@supabase/supabase-js';
+import Header from './components/Header.js';
 
 function App() {
   //desde el contexto
@@ -24,6 +24,7 @@ function App() {
 
   return (
       <UserProvider>
+        <Header/>
       <div className="container" style={{ padding: '50px 0 100px 0' }}>
       {!session ? <Auth /> : <MainPage key={session.user.id} session={session} />}
     </div>

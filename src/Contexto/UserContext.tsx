@@ -15,13 +15,16 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
   // Estado del usuario
   const [number, setNumber] = useState<number>(0);
   const [userData, setUserData] = useState<UserData | null>(null);
+  const [userTodos, setUserTodos] = useState<Todo[] | null>(null);
 
   // Proporcionar el contexto con el valor del usuario y las funciones para iniciar/cerrar sesión
   const contextValue: UserContextProps = {
     number,
     setNumber,
     userData, 
-    setUserData
+    setUserData,
+    userTodos,
+    setUserTodos
   };
 
   return (

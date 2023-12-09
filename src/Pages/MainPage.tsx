@@ -1,27 +1,26 @@
-import { PostgrestSingleResponse, Session } from '@supabase/supabase-js';
-import { useEffect, useState } from 'react';
-import { useUser } from '../Contexto/UserContext';
+import { Session } from "@supabase/supabase-js";
+import { useEffect } from "react";
+import { useUser } from "../Contexto/UserContext";
 
-import {useGetUser} from '../api/GetUser'
-import TodoList from '../components/TodoList';
+import { useGetUser } from "../api/GetUser";
+import TodoList from "../components/TodoList";
+import Busqueda from "../components/Busqueda";
+import Modal from "../components/Modal";
 
 interface MainPageProps {
-    session: Session | null; // Puedes ajustar esto según tus necesidades
-  }
-  
+  session: Session | null; // Puedes ajustar esto según tus necesidades
+}
 
- const MainPage: React.FC<MainPageProps> = ({session}) => {
+const MainPage: React.FC<MainPageProps> = ({ session }) => {
+  const { userData, setUserData } = useUser();
 
-    const {userData, setUserData } = useUser()
+  const userId = session?.user.id;
 
-    const userId = session?.user.id
-    
-    
   useEffect(() => {
     if (userId) {
       useGetUser(userId)
         .then((usuario) => {
-            setUserData(usuario);
+          setUserData(usuario);
         })
         .catch((error) => {
           console.error(error.message);
@@ -29,16 +28,27 @@ interface MainPageProps {
     }
   }, [userId]);
 
-
-  console.log(userData)
-
   return (
-    <body>
-        <h1> {userData?.email} </h1>
-        <TodoList/>
-    </body>
+    <>
+      {userData ? (
+        <main
+          className="Main"
+          style={{
+            margin: "20px",
+          }}
+        >
+          <Busqueda/>
+          <p>Hola! {userData?.username}</p>
+          <TodoList />
+        </main>
+      ) : (
+        <p>loading...</p>
+      )}
+
+    <Modal/>
+
+    </>
   );
-}
+};
 
-
-export default MainPage
+export default MainPage;
